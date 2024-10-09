@@ -23,7 +23,7 @@
     </div> -->
     <div>
         <div class="blog-header">
-            <h2>สวนจดการบลอก</h2>
+            <h2>ส่วนจัดการบล็อก</h2>
             <div>
                 <button v-on:click="navigateTo('/blog/create')">create
                     blog</button>
@@ -32,7 +32,7 @@
             <br>
         </div>
         <div v-if="blogs.length === 0" class="empty-blog">
-            *** ไมมขอมล ***
+            *** ไม่มีข้อมล ***
         </div>
         <div v-for="blog in blogs" v-bind:key="blog.id" class="blog-list">
             <!-- <p>id: {{ blog.id }}</p> -->
@@ -53,7 +53,7 @@
                 <p>
                     <button v-on:click="navigateTo('/blog/' + blog.id)">ดู
                         blog</button>
-                    <button v-on:click="navigateTo('/blog/edit/' + blog.id)">แกไข
+                    <button v-on:click="navigateTo('/blog/edit/' + blog.id)">แก้ไข
                         blog</button>
                     <button v-on:click="deleteBlog(blog)">ลบข้อมูล</button>
                 </p>
