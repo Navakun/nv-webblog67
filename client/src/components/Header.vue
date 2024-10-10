@@ -6,7 +6,7 @@
       <div class="container">
         <div class="navbar-header">
           <a class="navbar-brand navbar-link" href="#" v on:click.prevent="navigateTo('/dashboard')">
-            <img src="../assets/logo.png" id="logo">
+            <img src="../assets/smartphone.png" id="logo">
           </a>
           <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1">
             <span class="sr-only">Toggle navigation</span>
@@ -29,10 +29,9 @@
     <br />
   </div>
 </template>
+
 <script>
-
 export default {
-
   methods: {
     isLogin() {
       return this.$store.getters.isUserLoggedIn;
@@ -44,8 +43,8 @@ export default {
   }
 };
 </script>
-<style scoped>
 
+<style scoped>
 .navbar-brand>img {
   width: 36px;
   padding: 12px 0;
