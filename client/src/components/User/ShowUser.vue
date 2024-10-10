@@ -10,6 +10,7 @@
     <p>Type: {{ user.type }}</p>
     <p>Created At: {{ user.createdAt }}</p>
   </div>
+  
 </template>
 
 <script>

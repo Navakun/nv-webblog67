@@ -21,7 +21,7 @@
                 <li class="clear"><a @click.prevent="setCategory(' ')" href="#">Clear</a></li>
             </ul>
             <div class="clearfix"></div>
-        </header>
+        </header> <br>
 
         <transition-group name="fade">
             <div v-for="blog in filteredBlogs" :key="blog.id" class="blog-list">
@@ -34,9 +34,9 @@
                 <div class="blog-info">
                     <h3>{{ blog.title }}</h3>
                     <!--เพิ่มตัวอักษรให้เยอะขึ้น-->
-                    <div v-html="blog.content.slice(0, 200) + '...'"></div>
+                    <div v-html="blog.content.slice(0, 200)"></div>
                     <p><strong>Category:</strong> {{ blog.category }}</p>
-                    <p><strong>Create:</strong> {{ formatDate(blog.createdAt) }}</p>
+                    <p><strong>Create:</strong> {{ formatDate(blog.createdAt) }}</p><br>
                     <p>
                         <button class="btn btn-sm btn-info" @click="navigateTo('/blog/' + blog.id)">View Blog</button>
                         <button class="btn btn-sm btn-warning" @click="navigateTo('/blog/edit/' + blog.id)">Edit
@@ -51,11 +51,11 @@
         <div v-if="filteredBlogs.length === 0 && !loading" class="empty-blog">
             *** ไม่มีข้อมูล ***
         </div>
-        <div id="blog-list-bottom">
+        <!-- <div id="blog-list-bottom">
             <div class="blog-load-finished" v-if="filteredBlogs.length === results.length && results.length > 0">
                 โหลดข้อมูลครบแล้ว
             </div>
-        </div>
+        </div> -->
     </div>
 </template>
 
