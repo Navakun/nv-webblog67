@@ -15,7 +15,7 @@
         </div>
         <div class="button-group">
             <button class="button-edit" v-on:click="navigateTo('/blog/edit/' + blog.id)">Edit Blog</button>
-            <button class="btn btn-sm btn-danger" @click="deleteBlog(blog)">Delete</button>
+            <button class="btn btn-sm btn-danger" @click="deleteBlog(blog)" v-on:click="navigateTo('/blogs')">Delete</button>
             <button class="button-back" v-on:click="navigateTo('/blogs')">Back</button>
         </div>
     </div>
@@ -49,7 +49,19 @@ export default {
                 console.log(err);
             }
         },
-    }
+        
+    },
+    updated() {
+        const sens = document.querySelector('#blog-list-bottom');
+        pageWatcher = ScrollMonitor.create(sens);
+        pageWatcher.enterViewport(this.appendResults);
+    },
+    beforeUpdated() {
+        if (pageWatcher) {
+            pageWatcher.destroy();
+            pageWatcher = null;
+        }
+    },
 }
 </script>
 
