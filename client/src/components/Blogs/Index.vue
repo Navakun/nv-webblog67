@@ -2,7 +2,7 @@
     <div class="container">
         <header class="blog-header">
             <br><br>
-            <h2>List</h2>
+            <h2>All Product</h2>
             <!--ค้นหาข้อมูล-->
             <form>
                 <input type="text" v-model="search" placeholder="Search" aria-label="Search Blogs" />
@@ -32,11 +32,15 @@
                 </div>
 
                 <div class="blog-info">
-                    <h3>{{ blog.title }}</h3>
+                    <h3>{{ blog.brand_name }}</h3>
                     <!--เพิ่มตัวอักษรให้เยอะขึ้น-->
-                    <div v-html="blog.content.slice(0, 200)"></div>
-                    <p><strong>Category:</strong> {{ blog.category }}</p>
-                    <p><strong>Create:</strong> {{ formatDate(blog.createdAt) }}</p><br>
+                    <div v-html="blog.content.slice(0, 1000)"></div>
+                    <!-- <p><strong>Category:</strong> {{ blog.category }}</p> -->
+                    <!-- <p><strong>Create:</strong> {{ formatDate(blog.createdAt) }}</p><br> -->
+                    <p><strong>Model:</strong> {{ blog.model }}</p>
+                    <p><strong>Year of Release:</strong> {{ blog.year_of_release }}</p>
+                    <p><strong>Operating System:</strong> {{ blog.operating_system }}</p>
+                    <p><strong>Screen Size (in inches)</strong> {{ blog.screen_size }}</p>
                     <p>
                         <button class="btn btn-sm btn-info" @click="navigateTo('/blog/' + blog.id)">View Blog</button>
                         <button class="btn btn-sm btn-warning" @click="navigateTo('/blog/edit/' + blog.id)">Edit
@@ -76,6 +80,7 @@ export default {
             allBlogs: [],
             results: [],
             category: [],
+            brand_name: [],
             loading: false,
         };
     },
@@ -91,8 +96,8 @@ export default {
                 return this.allBlogs; // แสดงทั้งหมดหากไม่มีการค้นหา
             }
             return this.allBlogs.filter(blog =>
-                blog.title.toLowerCase().includes(this.search.toLowerCase()) ||
-                blog.category.toLowerCase().includes(this.search.toLowerCase())
+                blog.brand_name.toLowerCase().includes(this.search.toLowerCase()) ||
+                blog.model.toLowerCase().includes(this.search.toLowerCase())
             );
         },
     },
@@ -118,14 +123,20 @@ export default {
         },
         populateCategories() {
             this.allBlogs.forEach(blog => {
-                if (!this.category.includes(blog.category)) {
-                    this.category.push(blog.category);
+                if (!this.category.includes(blog.brand_name)) {
+                    this.category.push(blog.brand_name);
                 }
             });
         },
         formatDate(dateString) {
             const options = { year: 'numeric', month: 'long', day: 'numeric' };
             return new Date(dateString).toLocaleDateString('th-TH', options);
+        },
+        appendResults() {
+            if (this.blogs.length < this.results.length) {
+                const additionalBlogs = this.results.slice(this.blogs.length, this.blogs.length + LOAD_NUM);
+                this.blogs = this.blogs.concat(additionalBlogs);
+            }
         },
     },
     updated() {
