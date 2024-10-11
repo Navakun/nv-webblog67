@@ -60,7 +60,7 @@
         <input type="number" v-model="blog.screen_size" step="0.01" min="0">
       </p>
       <p>
-        <button type="submit" class="btn btn-sm btn-success">Create blog</button>
+        <button type="submit" class="btn btn-sm btn-success">Add Product</button>
         <button v-on:click="navigateTo('/blogs')" class="btn btn-sm btn-danger">Back</button>
       </p>
     </form>
@@ -95,6 +95,7 @@ export default {
         content: "",
         category: "",
         status: "saved",
+        
       },
       config: {
         toolbar: [

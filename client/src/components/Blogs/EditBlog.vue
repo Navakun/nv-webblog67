@@ -55,8 +55,8 @@
         <input type="number" v-model="blog.screen_size" step="0.01" min="0">
       </p>
       <p>
-        <button type="submit" class="btn btn-sm btn-success">update blog</button>
-        <button v-on:click="navigateTo('/blogs')" class="btn btn-sm btn-danger">กลับ</button>
+        <button type="submit" class="btn btn-sm btn-success">Update Product</button>
+        <button v-on:click="navigateTo('/blogs')" class="btn btn-sm btn-danger">Back</button>
       </p>
     </form>
   </div>

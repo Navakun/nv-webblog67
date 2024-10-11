@@ -8,13 +8,14 @@
             <p><strong>Model:</strong> {{ blog.model }}</p>
             <p><strong>Year of Release:</strong> {{ blog.year_of_release }}</p>
             <p><strong>Operating System:</strong> {{ blog.operating_system }}</p>
-            <p><strong>Screen Size (in inches)</strong> {{ blog.screen_size }}</p>
+            <p><strong>Screen Size (in inches):</strong> {{ blog.screen_size }}</p>
             <!-- <p><strong>Category:</strong> {{ blog.category }}</p>
         <p><strong>Status:</strong> {{ blog.status }}</p> -->
 
         </div>
         <div class="button-group">
             <button class="button-edit" v-on:click="navigateTo('/blog/edit/' + blog.id)">Edit Blog</button>
+            <button class="btn btn-sm btn-danger" @click="deleteBlog(blog)">Delete</button>
             <button class="button-back" v-on:click="navigateTo('/blogs')">Back</button>
         </div>
     </div>
@@ -39,7 +40,15 @@ export default {
     methods: {
         navigateTo(route) {
             this.$router.push(route)
-        }
+        },
+        async deleteBlog(blog) {
+            try {
+                await BlogsService.delete(blog);
+                this.refreshData();
+            } catch (err) {
+                console.log(err);
+            }
+        },
     }
 }
 </script>

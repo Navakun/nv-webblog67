@@ -16,7 +16,7 @@
         <div class="collapse navbar-collapse" id="navcol-1">
           <ul class="nav navbar-nav navbar-right">
             <li role="presentation"><router-link :to="{ name: 'blogs' }">Product</router-link></li>
-            <li role="presentation"><router-link :to="{ name: 'comments' }">Comments</router-link></li>
+            <!-- <li role="presentation"><router-link :to="{ name: 'comments' }">Add Product</router-link></li> -->
             <li role="presentation"><router-link :to="{ name: 'users' }">Users</router-link></li>
             <li role="presentation"><router-link :to="{ name: 'login' }">Login</router-link></li>
             <li role="presentation"><a href="#" @click="logout">Logout</a></li>
